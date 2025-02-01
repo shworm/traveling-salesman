@@ -71,8 +71,27 @@ public class Tour
 
     // ADD YOUR METHODS BELOW HERE
     public String toString() {
-        return "";
+        String output = "";  
+        Node current = head;
+
+        // if empty
+        if (current == null) {
+            return "Tour is empty.";
+        }
+
+        // iterate through
+        while (current != null) {
+            output += "Node " + current.p;
+            if (current.next != null) {
+                output += " points to " + current.next.p + "\n";
+            } else {
+                output += " (last node, points to null)\n";
+            }
+            current = current.next;
+        }
+        return output;
     }
+
 
     public void draw() {
         Node current = head;
@@ -189,7 +208,7 @@ public class Tour
         tour.insertNearest(p);
         System.out.println("Tour distance =  "+tour.distance());
         System.out.println("Number of points = "+tour.size());
-        System.out.println(tour);
+        System.out.println(tour.toString());
 
 
         // the tour size should be 3 and the distance 341.42 (don't forget to include the trip back
